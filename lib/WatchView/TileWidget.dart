@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ContentWidget extends StatefulWidget {
-  const ContentWidget({Key? key}) : super(key: key);
+class TileWidget extends StatefulWidget {
+  const TileWidget({Key? key, required this.tileColor}) : super(key: key);
+  
+  final Color tileColor;
+  
   @override
-  State<StatefulWidget> createState() => ContentWidgetState();
+  State<TileWidget> createState() => TileWidgetState();
 }
 
-class ContentWidgetState extends State<ContentWidget> {
+class TileWidgetState extends State<TileWidget> {
   final String _title = "林口 - 圓山";
   String _speed = "均速 100 公里";
   String _estimation = "約 2 分鐘";
@@ -26,10 +29,10 @@ class ContentWidgetState extends State<ContentWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: Colors.cyan,
-          borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: widget.tileColor,
+          borderRadius: const BorderRadius.all(Radius.circular(20))),
       child: Padding(
           padding: const EdgeInsets.all(15),
           child: Column(children: <Widget>[

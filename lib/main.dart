@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linkou/ContentWidget.dart';
+import 'package:linkou/WatchView/TileWidget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
-            ContentWidget()
+            TileWidget(tileColor: Colors.cyan),
+            TileWidget(tileColor: Colors.purple)
           ],
         ),
       ),
