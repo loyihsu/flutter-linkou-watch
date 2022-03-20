@@ -1,31 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:linkou/WatchView/WatchViewModel.dart';
 
 class TileWidget extends StatefulWidget {
-  const TileWidget({Key? key, required this.tileColor}) : super(key: key);
-  
+  const TileWidget(
+      {Key? key, required this.tileColor, required this.subscription, required this.idx})
+      : super(key: key);
+
   final Color tileColor;
-  
+  final WatchViewModel subscription;
+  final int idx;
+
   @override
   State<TileWidget> createState() => TileWidgetState();
 }
 
 class TileWidgetState extends State<TileWidget> {
-  final String _title = "林口 - 圓山";
-  String _speed = "均速 100 公里";
-  String _estimation = "約 2 分鐘";
-
-  void setSpeed(int newSpeed) {
-    setState(() {
-      _speed = "均速 " + newSpeed.toString() + " 公里";
-    });
-  }
-
-  void setEstination(int newEstimation) {
-    setState(() {
-      _estimation = "約" + newEstimation.toString() + "分鐘";
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,9 +25,10 @@ class TileWidgetState extends State<TileWidget> {
       child: Padding(
           padding: const EdgeInsets.all(15),
           child: Column(children: <Widget>[
-            Text(_title, style: Theme.of(context).textTheme.headline5),
-            Text(_speed),
-            Text(_estimation),
+            Text(widget.subscription.getElement(widget.idx).title,
+                style: Theme.of(context).textTheme.headline5),
+            Text(widget.subscription.getElement(widget.idx).speed),
+            Text(widget.subscription.getElement(widget.idx).estimation),
           ])),
     );
   }
